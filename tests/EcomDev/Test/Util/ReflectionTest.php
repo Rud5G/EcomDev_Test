@@ -379,10 +379,6 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
             Reflection::getAnnotations($instance, 'unAnnotatedMethod')
         );
 
-
-
     }
-
-
 
 }

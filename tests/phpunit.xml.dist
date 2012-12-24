@@ -3,4 +3,7 @@
     <testsuite name="EcomDev_Test Library Tests">
         <directory suffix="Test.php">.</directory>
     </testsuite>
+    <php>
+        <ini name="date.timezone" value="Europe/Amsterdam"/>
+    </php>
 </phpunit>

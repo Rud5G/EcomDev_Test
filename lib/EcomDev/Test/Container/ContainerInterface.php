@@ -23,8 +23,8 @@ interface ContainerInterface
     /**
      * Sets source for container method
      *
-     * @param $source
-     * @return mixed
+     * @param mixed $source
+     * @return ContainerInterface
      */
     public function setSource($source);
 
@@ -63,17 +63,16 @@ interface ContainerInterface
      * Adds indexer to container
      *
      * @param string $code
-     * @param IndexerInterface $indexer
-     *
-     * @return mixed
+     * @param callable $indexerCallback
+     * @return ContainerInterface
      */
-    public function addIndexer($code, IndexerInterface $indexer);
+    public function addIndexer($code, $indexerCallback);
 
     /**
      * Removes indexer from container
      *
-     * @param $code
-     * @return mixed
+     * @param string $code
+     * @return ContainerInterface
      */
     public function removeIndexer($code);
 
