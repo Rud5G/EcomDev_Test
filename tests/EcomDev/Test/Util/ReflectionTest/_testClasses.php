@@ -1,5 +1,4 @@
 <?php
-// @codeCoverageIgnoreStart
 namespace EcomDev\Test\Util;
 
 /** test classes that are used for reflection tests */
@@ -84,5 +83,3 @@ class TestExampleClass
         self::$publicStaticProperty = null;
     }
 }
-
-// @codeCoverageIgnoreEnd

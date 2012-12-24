@@ -48,14 +48,25 @@ interface ContainerInterface
      *
      * Search path might look like the following:
      *
-     * key1/key2/@attribute=value/key3/key4
-     * or
      * key1/key2/attribute=value/key3/key4
+     * or
+     * key1/key2/attribute=value&&attribute2=value/key3/key4
      * or
      * key1/key2/attribute!=value/key3/key4
      *
+     * Supported operators for conditions match:
+     * =  - equals
+     * != - not equals
+     * ~  - contains, for string or array
+     * >  - more than
+     * <  - less than
+     * >= - more than equals
+     * <= - less than equals
+     * && - and
+     * || - or
+     *
      * @param string $path
-     * @return mixed|bool
+     * @return array|bool
      */
     public function find($path);
 

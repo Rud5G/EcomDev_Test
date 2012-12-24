@@ -16,7 +16,6 @@ class ContainerAbstractTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
        $this->container = $this->getMockForAbstractClass('\\EcomDev\\Test\\Container\\ContainerAbstract');
-
     }
 
     /**
@@ -146,5 +145,28 @@ class ContainerAbstractTest extends \PHPUnit_Framework_TestCase
     {
         Reflection::setProperty($this->container, 'index', $expectedIndex);
         $this->assertSame($expectedIndex, $this->container->getIndex());
+    }
+
+    /**
+     * Data provider for container abstract test
+     *
+     * @return array
+     */
+    public function dataProviderTestFind()
+    {
+        return include __DIR__ . DS . basename(__FILE__, '.php') . DS . '_' . __FUNCTION__ . '.php';
+    }
+
+    /**
+     * @param $indexData
+     * @param $searchString
+     * @param $expectedResult
+     *
+     * @dataProvider dataProviderTestFind
+     */
+    public function testFind($indexData, $searchString, $expectedResult)
+    {
+        Reflection::setProperty($this->container, 'index', $indexData);
+        $this->assertSame($expectedResult, $this->container->find($searchString));
     }
 }

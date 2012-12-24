@@ -16,20 +16,27 @@
  * @author     Ivan Chepurnyi <ivan.chepurnyi@ecomdev.org>
  */
 
+
+
 // Inclusion of files under test
 $paths = explode(PATH_SEPARATOR, get_include_path());
 array_unshift($paths, '../app/code/local');
 array_unshift($paths, '../app/code/community');
 array_unshift($paths, '../app/code/core');
 array_unshift($paths, '../lib');
+array_unshift($paths, '../tests');
 set_include_path(implode(PATH_SEPARATOR, $paths));
 
-
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+    define('BP', dirname(__DIR__));
+    define('PS', PATH_SEPARATOR);
+}
 
 spl_autoload_register(function ($className) {
     $filePath = strtr($className, array(
-        '_' => DIRECTORY_SEPARATOR,
-        '\\' => DIRECTORY_SEPARATOR
+        '_' => DS,
+        '\\' => DS
     ));
 
     @include $filePath . '.php';

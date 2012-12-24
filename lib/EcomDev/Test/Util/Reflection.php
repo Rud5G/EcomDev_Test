@@ -25,6 +25,7 @@ namespace EcomDev\Test\Util;
  */
 class Reflection
 {
+
     const REGEXP_ANNOTATION = '/^\s*[\\*]?\s*@([a-zA-Z][a-zA-Z_0-9]*)[\t ]*(.*)$/m';
 
     /**
@@ -220,6 +221,7 @@ class Reflection
             }
             return $result;
         }
+
         return array();
     }
 }
