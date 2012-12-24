@@ -5,6 +5,6 @@ This extension is in development phase for replacement of the current EcomDev_PH
 
 
 #### Build Information
-Dev Branch: [![Build Status](https://travis-ci.org/EcomDev/EcomDev_Test.png?branch=dev)](https://travis-ci.org/EcomDev/EcomDev_Test)[![Build Status](https://travis-ci.org/EcomDev/EcomDev_Test.png)](https://travis-ci.org/EcomDev/EcomDev_Test)
+Dev Branch: [![Build Status](https://travis-ci.org/EcomDev/EcomDev_Test.png?branch=dev)](https://travis-ci.org/EcomDev/EcomDev_Test)
 Master Branch: Not yet available
 
