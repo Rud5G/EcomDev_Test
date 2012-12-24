@@ -25,6 +25,8 @@ namespace EcomDev\Test\Util;
  */
 class Reflection
 {
+    const REGEXP_ANNOTATION = '/^\s*[\\*]?\s*@([a-zA-Z][a-zA-Z_0-9]*)[\t ]*(.*)$/m';
+
     /**
      * Cache of reflection objects
      *
@@ -41,7 +43,7 @@ class Reflection
      */
     public static function reflect($classOrInstance)
     {
-        $cacheId = is_object($classOrInstance) ? spl_object_hash($classOrInstance) : $classOrInstance;
+        $cacheId = __METHOD__ . (is_object($classOrInstance) ? spl_object_hash($classOrInstance) : $classOrInstance);
 
         if (isset(self::$cache[$cacheId])) {
             return self::$cache[$cacheId];
@@ -169,5 +171,55 @@ class Reflection
     {
         $arguments = array_slice(func_get_args(), 2);
         return self::callArgs($classOrInstance, $method, $arguments);
+    }
+
+    /**
+     * Returns array of annotations based for specified class or method
+     *
+     * The data is returned in two variants:
+     * array('class' => array(...)) if only class annotations requested
+     * or array('class' => array(), 'method' => array()) if it method argument is specified
+     *
+     * @param string|object $classOrInstance
+     * @param string|null $method
+     * @return array
+     */
+    public static function getAnnotations($classOrInstance, $method = null)
+    {
+        $reflection = self::reflect($classOrInstance);
+
+        $result = array(
+            'class' => self::parseAnnotations($reflection->getDocComment())
+        );
+
+        if ($method !== null && $reflection->hasMethod($method)) {
+            $methodReflection = $reflection->getMethod($method);
+            $result['method'] = self::parseAnnotations($methodReflection->getDocComment());
+        }
+
+        return $result;
+    }
+
+    /**
+     * Parses annotations from doc comment of method
+     *
+     * @param string $docComment
+     * @return array
+     */
+    public static function parseAnnotations($docComment)
+    {
+        if (is_string($docComment) && preg_match_all(self::REGEXP_ANNOTATION, $docComment, $matches)) {
+            $result = array();
+            foreach ($matches[1] as $index => $name) {
+                if ($matches[2][$index] === '') {
+                    $value = null;
+                } else {
+                    $value = $matches[2][$index];
+                }
+                $result[$name][] = $value;
+            }
+            return $result;
+        }
+        return array();
     }
 }

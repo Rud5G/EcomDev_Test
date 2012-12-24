@@ -276,20 +276,113 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProviderTestCallArgs()
     {
-        return array(
-            array(
-                array('argument1')
-            ),
-            array(
-                array('argument1', 'argument2')
-            ),
-            array(
-                array('argument1', 'argument2', 'argument3')
-            ),
-            array(
-                array('argument1', 'argument2', 'argument3', 'argument4')
-            )
-        );
+        return include __DIR__ . DIRECTORY_SEPARATOR . '_' . __FUNCTION__ . '.php';
     }
+
+    /**
+     * Test of annotations parsing
+     *
+     * @param string $docBlock
+     * @param array $expectedResult
+     *
+     * @dataProvider dataProviderTestParseAnnotations
+     */
+    public function testParseAnnotations($docBlock, $expectedResult)
+    {
+        $this->assertSame($expectedResult, Reflection::parseAnnotations($docBlock));
+    }
+
+    /**
+     * Data provider for parsing annotations test
+     *
+     * @return array
+     */
+    public function dataProviderTestParseAnnotations()
+    {
+        return include __DIR__ . DIRECTORY_SEPARATOR . '_' . __FUNCTION__ . '.php';
+    }
+
+
+    /**
+     * Test annotations retrieval from doc comment of class or/and method
+     * This method is used, because test framework is not based to any particular test framework,
+     * so it supposed to have own method.
+     *
+     */
+    public function testGetAnnotations()
+    {
+        // Expected data
+        $expectedClassAnnotations = array(
+            'someAnnotation' => array('some annotation', 'some annotation2'),
+            'group' => array('somegroup'),
+        );
+        $expectedMethodAnnotations = array(
+            'test' => array('function'),
+            'map' => array('function function'),
+            'loadFixture' => array('somevalue somevalue', null)
+        );
+
+
+        // Test annotated method via static call
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations,
+                'method' => $expectedMethodAnnotations
+            ),
+            Reflection::getAnnotations(TestExampleClass::$class, 'annotatedMethod')
+        );
+
+        // Test annotated class via static call
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations
+            ),
+            Reflection::getAnnotations(TestExampleClass::$class)
+        );
+
+
+        // Test not annotated method via static call
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations,
+                'method' => array()
+            ),
+            Reflection::getAnnotations(TestExampleClass::$class, 'unAnnotatedMethod')
+        );
+
+        $instance = new TestExampleClass();
+
+        // Test annotated method via instance
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations,
+                'method' => $expectedMethodAnnotations
+            ),
+            Reflection::getAnnotations($instance, 'annotatedMethod')
+        );
+
+        // Test annotated class via instance
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations
+            ),
+            Reflection::getAnnotations($instance)
+        );
+
+
+        // Test not annotated method via instance
+        $this->assertSame(
+            array(
+                'class' => $expectedClassAnnotations,
+                'method' => array()
+            ),
+            Reflection::getAnnotations($instance, 'unAnnotatedMethod')
+        );
+
+
+
+    }
+
+
 
 }

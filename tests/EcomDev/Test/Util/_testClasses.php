@@ -2,6 +2,13 @@
 namespace EcomDev\Test\Util;
 
 /** test classes that are used for reflection tests */
+/**
+ * Class comment
+ *
+ * @someAnnotation some annotation
+ * @someAnnotation some annotation2
+ * @group somegroup
+ */
 class TestExampleClass
 {
     public static $class = __CLASS__;
@@ -50,8 +57,17 @@ class TestExampleClass
      * @test function
      * @map function function
      * @loadFixture somevalue somevalue
+     * @loadFixture
      */
-    public function methodInstall()
+    public function annotatedMethod()
+    {
+
+    }
+
+    /**
+     * Method without annotations
+     */
+    public function unAnnotatedMethod()
     {
 
     }
