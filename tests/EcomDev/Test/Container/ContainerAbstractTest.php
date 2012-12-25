@@ -154,7 +154,7 @@ class ContainerAbstractTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProviderTestFind()
     {
-        return include __DIR__ . DS . basename(__FILE__, '.php') . DS . '_' . __FUNCTION__ . '.php';
+        return includeDataFile(__FILE__, __FUNCTION__);
     }
 
     /**

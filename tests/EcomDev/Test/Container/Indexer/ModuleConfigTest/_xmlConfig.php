@@ -1,0 +1,52 @@
+<?php
+
+return '<?xml version="1.0"?>
+<config>
+   <modules>
+        <Module_Name>
+            <active>true</active>
+            <codePool>core</codePool>
+            <version>1.0.0</version>
+        </Module_Name>
+        <Module_Name1>
+            <active>true</active>
+            <codePool>core</codePool>
+            <version>1.0.1</version>
+        </Module_Name1>
+        <Module_Name2>
+            <active>true</active>
+            <codePool>core</codePool>
+            <version>1.0.2</version>
+        </Module_Name2>
+        <Module_Name3>
+            <active>false</active>
+            <codePool>core</codePool>
+            <version>1.0.3</version>
+        </Module_Name3>
+        <Module_Name4>
+            <active>true</active>
+            <codePool>community</codePool>
+            <version>1.0.4</version>
+        </Module_Name4>
+        <Module_Name5>
+            <active>true</active>
+            <codePool>community</codePool>
+            <version>1.0.5</version>
+        </Module_Name5>
+        <Module_Name6>
+            <active>false</active>
+            <codePool>community</codePool>
+            <version>1.0.6</version>
+        </Module_Name6>
+        <Module_Name7>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>1.0.7</version>
+        </Module_Name7>
+        <Module_Name8>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends><Module_Name7 /></depends>
+        </Module_Name8>
+   </modules>
+</config>';

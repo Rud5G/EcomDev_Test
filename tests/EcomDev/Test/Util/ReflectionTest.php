@@ -26,7 +26,7 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-        require_once __DIR__ . DS . basename(__FILE__, '.php') . DS . '_testClasses.php';
+        require_once dataFilePath(__FILE__, 'testClasses');
     }
 
     /**
@@ -276,7 +276,7 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProviderTestCallArgs()
     {
-        return include __DIR__ . DS . basename(__FILE__, '.php') . DS . '_' . __FUNCTION__ . '.php';
+        return includeDataFile(__FILE__, __FUNCTION__);
     }
 
     /**
@@ -299,7 +299,7 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProviderTestParseAnnotations()
     {
-        return include __DIR__ . DS . basename(__FILE__, '.php') . DS . '_' . __FUNCTION__ . '.php';
+        return includeDataFile(__FILE__, __FUNCTION__);
     }
 
 

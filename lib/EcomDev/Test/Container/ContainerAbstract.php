@@ -17,6 +17,12 @@
  */
 namespace EcomDev\Test\Container;
 
+/**
+ * Abstract container implementation
+ *
+ * Containers are used for storing system information,
+ * that later on can be evaluated by test framework
+ */
 abstract class ContainerAbstract implements ContainerInterface
 {
     /**
