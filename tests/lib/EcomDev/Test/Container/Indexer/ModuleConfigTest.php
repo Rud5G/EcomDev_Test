@@ -36,7 +36,7 @@ class ModuleConfigTest extends \PHPUnit_Framework_TestCase
     {
         $indexer = new ModuleConfig();
         $indexer->setSource($xml);
-        $this->assertSame($expectedResult, $indexer->$indexerName());
+        $this->assertEquals($expectedResult, $indexer->$indexerName());
     }
 
     public function dataProviderTestIndexers()

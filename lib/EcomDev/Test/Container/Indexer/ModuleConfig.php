@@ -59,4 +59,62 @@ class ModuleConfig extends ConfigAbstract
 
         return $result;
     }
+
+    public function indexAliases()
+    {
+        $types = array('models', 'helpers', 'blocks');
+        $result = array();
+        $resources = array();
+        foreach ($types as $type) {
+            if (isset($this->getSource()->global->$type)) {
+                $container = $this->getSource()->global->$type;
+                foreach ($container->children() as $node) {
+                    if (isset($node->resourceModel) && $type === 'models') {
+                        $resources[(string)$node->resourceModel]['alias'] = $node->getName();
+                    }
+
+                    if (isset($node->entities) && $type === 'models') {
+                        $resources[$node->getName()]['tables'] = array();
+                        foreach ($node->entities->children() as $table) {
+                            if (!isset($table->table)) {
+                                continue;
+                            }
+                            $resources[$node->getName()]['tables'][$table->getName()] = (string)$table->table;
+                        }
+                    }
+
+                    if (isset($node->rewrite)) {
+                        foreach ($node->rewrite->children() as $rewrite) {
+                            $result[$type]['rewrite'][$node->getName() . '/' . $rewrite->getName()] = (string) $rewrite;
+                        }
+                    }
+
+                    $result[$type]['prefix'][$node->getName()] = (string)$node->class;
+                }
+            }
+        }
+
+        foreach ($resources as $prefix => $info) {
+            if (!isset($info['alias']) || !isset($result['models']['prefix'][$prefix])) {
+                continue;
+            }
+
+            $result['resources']['prefix'][$info['alias']] = $result['models']['prefix'][$prefix];
+            unset($result['models']['prefix'][$prefix]); // Remove resource model from models
+            foreach ($result['models']['rewrite'] as $alias => $class) {
+                if (strpos($alias, $prefix . '/') === 0) {
+                    $realAlias = $info['alias'] . '/' . substr($alias, strlen($prefix)+1);
+                    $result['resources']['rewrite'][$realAlias] = $class;
+                    unset($result['models']['rewrite'][$alias]);
+                }
+            }
+
+            if (isset($info['tables'])) {
+                foreach ($info['tables'] as $alias => $realTable) {
+                     $result['tables']['rewrite'][$info['alias'] . '/' . $alias] = $realTable;
+                }
+            }
+        }
+        return $result;
+    }
 }

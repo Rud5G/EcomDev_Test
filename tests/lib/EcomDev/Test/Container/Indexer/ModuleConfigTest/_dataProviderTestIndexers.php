@@ -60,5 +60,52 @@ return array(
                 )
             )
         )
+    ),
+    array(
+        'indexAliases',
+        new SimpleXMLElement($xmlConfig),
+        array(
+            'models' => array(
+                'rewrite' => array(
+                    'module_name2/model_name' => 'Module_Name5_Model_Model_Name'
+                ),
+                'prefix' => array(
+                    'module_name' => 'Module_Name_Model',
+                    'module_name1' => 'Module_Name1_Model',
+                    'module_name2' => 'Module_Name2_Model',
+                    'module_name2_resource' => 'Module_Name2_Model_Resource',
+                )
+            ),
+            'helpers' => array(
+                'prefix' => array(
+                    'module_name' => 'Module_Name_Helper',
+                    'module_name1' => 'Module_Name1_Helper',
+                )
+            ),
+            'blocks' => array(
+                'rewrite' => array(
+                    'module_name2/block_name' => 'Module_Name5_Block_Block_Name'
+                ),
+                'prefix' => array(
+                    'module_name' => 'Module_Name_Block',
+                    'module_name2' => 'Module_Name2_Block'
+                )
+            ),
+            'resources' => array (
+                'prefix' => array (
+                    'module_name' => 'Module_Name_Model_Resource',
+                    'module_name1' => 'Module_Name_Model_Resource'
+                ),
+                'rewrite' => array (
+                    'module_name1/model_name' => 'Module_Name2_Model_Resource_Model_Name'
+                )
+            ),
+            'tables' => array(
+                'rewrite' => array(
+                    'module_name/core' => 'module_core',
+                    'module_name/another_core' => 'module_another_core'
+                )
+            )
+        )
     )
 );
