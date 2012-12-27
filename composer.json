@@ -4,6 +4,10 @@
     "type": "magento-module",
     "description": "Magento Test Frameworks Integration",
     "homepage": "https://github.com/EcomDev/EcomDev_Test",
+    "repositories": [{
+        "type": "composer",
+        "url": "http://packages.firegento.com"
+    }],
     "require": {
         "mikey179/vfsStream": "1.*",
         "magento-hackathon/magento-composer-installer": "dev-master"
