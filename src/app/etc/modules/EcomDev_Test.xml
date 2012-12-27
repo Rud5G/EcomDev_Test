@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <EcomDev_Test>
+            <codePool>community</codePool>
+            <active>true</active>
+        </EcomDev_Test>
+    </modules>
+</config>

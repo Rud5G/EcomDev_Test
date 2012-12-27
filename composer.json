@@ -1,0 +1,35 @@
+{
+    "name": "ecomdev/ecomdev_test",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Magento Test Frameworks Integration",
+    "homepage": "https://github.com/EcomDev/EcomDev_Test",
+    "require": {
+        "mikey179/vfsStream": "1.*",
+        "magento-hackathon/magento-composer-installer": "dev-master"
+    },
+    "require-dev": {
+	    "mikey179/vfsStream": "1.*",
+        "ecomdev/mage-ci": "dev-master"
+    },
+    "authors":[
+        {
+            "name": "Ivan Chepurnyi",
+            "email":"ivan.chepurnyi@ecomdev.org",
+            "homepage": "http://www.ecomdev.org",
+            "role":"Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "EcomDev\\Test": "src/lib",
+            "EcomDev_Test": "app/code/community/EcomDev/Test/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "magento-root-dir": "tests/app/magento"
+    }
+}
