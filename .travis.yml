@@ -7,6 +7,8 @@ env:
   - MAGE=1.6.2.0
   - MAGE=1.5.1.0
 before_install:
+  # Fixing Magento hackathon installer
+  - mkdir -p tests/app/magento
   # Installing required composer packages
   - composer update --dev
 before_script:
