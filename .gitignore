@@ -1,6 +1,7 @@
 .DS_Store
 .idea/*
 tests/*/.coverage
+tests/app/magento
 bin/*
 vendor/*
 composer.lock

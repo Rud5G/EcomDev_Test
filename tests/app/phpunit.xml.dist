@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="bootstrap.php.dist">
+    <testsuite name="EcomDev_Test Module Tests">
+        <directory suffix="Test.php">EcomDev</directory>
+    </testsuite>
+    <php>
+        <ini name="date.timezone" value="Europe/Amsterdam"/>
+    </php>
+    <filter>
+        <blacklist>
+            <directory prefix="_" suffix=".php">.</directory>
+            <file>bootstrap.php</file>
+        </blacklist>
+    </filter>
+</phpunit>

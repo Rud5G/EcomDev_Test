@@ -2,6 +2,17 @@ language: php
 php:
   - 5.3
   - 5.4
-before_script: cd tests
+env:
+  - MAGE=1.7.0.2
+  - MAGE=1.6.2.0
+  - MAGE=1.5.1.0
+before_install:
+  # Installing required composer packages
+  - composer update --dev
+before_script:
+  # Installing magento version with prepared DB dump
+  - bin/mage-ci install tests/app/magento $MAGE magento -c -t -r http://mage-ci.ecomdev.org
+  # Installing EcomDev_Test module
+  - bin/mage-ci install-module tests/app/magento $(pwd)
 script:
-  - cd lib && phpunit --coverage-text
+  - bin/mage-ci phpunit tests --colors --coverage-text
