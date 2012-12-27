@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit bootstrap="bootstrap.php">
+<phpunit bootstrap="bootstrap.php.dist">
     <testsuite name="EcomDev_Test Library Tests">
         <directory suffix="Test.php">.</directory>
     </testsuite>
@@ -10,9 +10,7 @@
         <blacklist>
             <directory prefix="_" suffix=".php">.</directory>
             <file>bootstrap.php</file>
+            <directory>../../vendor/*</directory>
         </blacklist>
     </filter>
-    <logging>
-        <log type="coverage-html" target=".coverage" />
-    </logging>
 </phpunit>
