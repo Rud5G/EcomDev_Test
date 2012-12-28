@@ -45,4 +45,29 @@ class FileSystemTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\RuntimeException', 'Please specify Magento base path before using this utility');
         FileSystem::getBasePath();
     }
+
+    /**
+     * Test Module directory retrieval process
+     *
+     * @dataProvider dataProviderTestGetModuleDirectory
+     */
+    public function testGetModuleDirectory($moduleName, $codePool, $expectedResult)
+    {
+        FileSystem::setBasePath(vfsStream::url('magento'));
+        if (is_string($expectedResult)) {
+            $expectedResult = new \DirectoryIterator(vfsStream::url($expectedResult));
+        }
+
+        $this->assertEquals($expectedResult, FileSystem::getModuleDirectory($moduleName, $codePool));
+    }
+
+    /**
+     * Data provider for testing module directory retrieval
+     *
+     * @return array
+     */
+    public function dataProviderTestGetModuleDirectory()
+    {
+        return includeDataFile(__FILE__, __FUNCTION__);
+    }
 }

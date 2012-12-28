@@ -20,7 +20,20 @@ return array(
     'magento' => array(
         'app' => array(
             'Mage.php' => '',
-            'code' => array()
+            'code' => array(
+                'core' => array(
+                    'Mage' => array(
+                        'Core' => array(),
+                        'Catalog' => array(),
+                        'Reports' => array()
+                    )
+                ),
+                'community' => array(
+                    'EcomDev' => array(
+                        'PHPUnit' => array()
+                    )
+                )
+            )
         )
     ),
     'not_magento' => array(

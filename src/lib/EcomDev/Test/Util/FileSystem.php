@@ -4,6 +4,8 @@ namespace EcomDev\Test\Util;
 
 class FileSystem
 {
+    const MODULE_PATH = 'app/code/%s/%s';
+
     /**
      * Base path to Magento instance
      *
@@ -41,5 +43,21 @@ class FileSystem
         }
 
         return self::$basePath;
+    }
+
+
+    public static function getModuleDirectory($moduleName, $codePool = null)
+    {
+        if ($codePool === null) {
+            $codePool = 'core';
+        }
+
+        $modulePath = self::getBasePath() . '/' . sprintf(self::MODULE_PATH, $codePool, strtr($moduleName, '_', '/'));
+
+        if (is_dir($modulePath)) {
+            return new \DirectoryIterator($modulePath);
+        }
+
+        return false;
     }
 }

@@ -22,8 +22,23 @@ namespace EcomDev\Test\Container\Indexer;
  * Module configuration indexer test
  *
  */
+use EcomDev\Test\Util\FileSystem;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\visitor\vfsStreamPrintVisitor;
+use org\bovigo\vfs\visitor\vfsStreamStructureVisitor;
+
 class ModuleConfigTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Set up of Magento file system
+     *
+     */
+    protected function setUp()
+    {
+        vfsStream::setup('root', null, includeDataFile(__FILE__, 'fsStructure'));
+        FileSystem::setBasePath(vfsStream::url('magento'));
+    }
+
     /**
      * Tests indexers based on data provider information
      *
@@ -36,9 +51,18 @@ class ModuleConfigTest extends \PHPUnit_Framework_TestCase
     {
         $indexer = new ModuleConfig();
         $indexer->setSource($xml);
+        // Prevent fatal errors during TDD development
+        $this->assertTrue(method_exists($indexer, $indexerName), 'Method is NOT implemented');
         $this->assertEquals($expectedResult, $indexer->$indexerName());
     }
 
+    /**
+     * Returns data provider testing various indexer method
+     *
+     * First argument in a call is a name of the method that will be invoked
+     *
+     * @return array
+     */
     public function dataProviderTestIndexers()
     {
         return includeDataFile(__FILE__, __FUNCTION__);

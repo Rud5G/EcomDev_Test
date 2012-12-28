@@ -1,10 +1,10 @@
 language: php
 php:
   - 5.3
-env:
-  - MAGE=1.7.0.2
-  - MAGE=1.6.2.0
-  - MAGE=1.5.1.0
+# env:
+#  - MAGE=1.7.0.2
+#  - MAGE=1.6.2.0
+#  - MAGE=1.5.1.0
 before_install:
   # Fixing Magento hackathon installer
   - mkdir -p tests/app/magento
@@ -12,8 +12,8 @@ before_install:
   - composer update --dev
 before_script:
   # Installing magento version with prepared DB dump
-  - bin/mage-ci install tests/app/magento $MAGE magento -c -t -r http://mage-ci.ecomdev.org
+  #- bin/mage-ci install tests/app/magento $MAGE magento -c -t -r http://mage-ci.ecomdev.org
   # Installing EcomDev_Test module
-  - bin/mage-ci install-module tests/app/magento $(pwd)
+  #- bin/mage-ci install-module tests/app/magento $(pwd)
 script:
-  - bin/mage-ci phpunit tests --colors --coverage-text
+  - bin/mage-ci phpunit tests/lib --colors --coverage-text

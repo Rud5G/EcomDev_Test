@@ -119,5 +119,24 @@ return '<?xml version="1.0"?>
                 </rewrite>
             </module_name2>
         </blocks>
+
+        <resources>
+            <module_name_setup>
+                <setup>
+                    <module>Module_Name</module>
+                </setup>
+            </module_name_setup>
+            <module_name2_setup>
+                <setup>
+                    <class>Module_Name2_Model_Resource_Setup</class>
+                    <module>Module_Name2</module>
+                </setup>
+            </module_name2_setup>
+            <unknown_module_setup>
+                <setup>
+                    <module>Unknown_Module</module>
+                </setup>
+            </unknown_module_setup>
+        </resources>
    </global>
 </config>';

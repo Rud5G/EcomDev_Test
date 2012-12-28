@@ -107,5 +107,47 @@ return array(
                 )
             )
         )
+    ),
+    array(
+        'indexSetup',
+        new SimpleXMLElement($xmlConfig),
+        array(
+            'defined' => array(
+                'Module_Name' => array(
+                    'module_name_setup' => 'Mage_Core_Model_Resource_Setup'
+                ),
+                'Module_Name2' => array(
+                    'module_name2_setup' => 'Module_Name2_Model_Resource_Setup'
+                )
+            ),
+            'data' => array(
+                'Module_Name' => array(
+                    'module_name_setup' => array(
+                        'data-install-1.0.0.php'
+                    )
+                ),
+                'Module_Name2' => array(
+                    'module_name2_setup' => array(
+                        'mysql4-data-install-1.0.0.php'
+                    )
+                )
+            ),
+            'schema' => array(
+                'Module_Name' => array(
+                    'module_name_setup' => array(
+                        'install-1.0.0.php',
+                        'upgrade-1.0.0-1.0.1.php',
+                        'upgrade-1.0.1-1.0.3.php'
+                    )
+                ),
+                'Module_Name2' => array(
+                    'module_name2_setup' => array(
+                        'mysql4-install-1.0.0.php',
+                        'mysql4-upgrade-1.0.0-1.0.1.php',
+                        'mysql4-upgrade-1.0.1-1.0.3.php'
+                    )
+                )
+            )
+        )
     )
 );
