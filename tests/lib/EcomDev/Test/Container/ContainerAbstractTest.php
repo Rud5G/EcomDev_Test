@@ -33,6 +33,10 @@ class ContainerAbstractTest extends \PHPUnit_Framework_TestCase
      */
     protected $container = null;
 
+    /**
+     * Sets up container property
+     *
+     */
     protected function setUp()
     {
        $this->container = $this->getMockForAbstractClass('\\EcomDev\\Test\\Container\\ContainerAbstract');
@@ -60,6 +64,22 @@ class ContainerAbstractTest extends \PHPUnit_Framework_TestCase
         Reflection::setProperty($this->container, 'source', $source);
         $this->assertSame($source, $this->container->getSource());
     }
+
+    /**
+     * Test get source method and initSource method as initializer of abstract container
+     *
+     */
+    public function testGetSourceWithInit()
+    {
+        $this->assertAttributeSame(null, 'source', $this->container);
+        $this->container->expects($this->once())
+            ->method('initSource')
+            ->will($this->returnSelf());
+
+        $this->container->getSource();
+        $this->assertAttributeSame(null, 'source', $this->container);
+    }
+
 
     /**
      * Test add indexer functionality

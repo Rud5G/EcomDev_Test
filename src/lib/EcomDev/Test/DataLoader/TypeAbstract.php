@@ -36,7 +36,6 @@ abstract class TypeAbstract implements TypeInterface
      */
     abstract protected function guessFileName($fileName);
 
-
     /**
      * Indicator of load file availability
      *

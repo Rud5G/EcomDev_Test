@@ -72,6 +72,10 @@ abstract class ContainerAbstract implements ContainerInterface
      */
     public function getSource()
     {
+        if ($this->source === null) {
+            $this->initSource();
+        }
+
         return $this->source;
     }
 
@@ -308,4 +312,11 @@ abstract class ContainerAbstract implements ContainerInterface
 
         return $result === $expectedResult;
     }
+
+    /**
+     * Initializes source if it was not initialized
+     *
+     * @return ContainerAbstract
+     */
+    abstract protected function initSource();
 }

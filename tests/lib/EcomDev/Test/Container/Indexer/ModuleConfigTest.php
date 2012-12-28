@@ -18,14 +18,15 @@
 
 namespace EcomDev\Test\Container\Indexer;
 
-/**
- * Module configuration indexer test
- *
- */
 use EcomDev\Test\Util\FileSystem;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\visitor\vfsStreamPrintVisitor;
 use org\bovigo\vfs\visitor\vfsStreamStructureVisitor;
+
+/**
+ * Module configuration indexer test
+ *
+ */
 
 class ModuleConfigTest extends \PHPUnit_Framework_TestCase
 {
