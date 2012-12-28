@@ -9,6 +9,7 @@
     <filter>
         <blacklist>
             <directory prefix="_" suffix=".php">.</directory>
+            <file>bootstrap.php.dist</file>
             <file>bootstrap.php</file>
             <directory>../../vendor/*</directory>
         </blacklist>

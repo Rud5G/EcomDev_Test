@@ -67,4 +67,28 @@ class ModuleConfigTest extends \PHPUnit_Framework_TestCase
     {
         return includeDataFile(__FILE__, __FUNCTION__);
     }
+
+    /**
+     * Tests index method of indexer
+     *
+     */
+    public function testIndex()
+    {
+        $indexersToCheck = includeDataFile(__FILE__, 'indexList');
+
+        $moduleConfig = $this->getMock(
+            '\\EcomDev\\Test\\Container\\Indexer\\ModuleConfig', array_values($indexersToCheck)
+        );
+        // Check that every method was invoked and data got set correctly
+        $expectedResult = array();
+        foreach ($indexersToCheck as $indexKey => $indexMethod)
+         {
+            $expectedResult[$indexKey] = array($indexMethod);
+            $moduleConfig->expects($this->once())
+                ->method($indexMethod)
+                ->will($this->returnValue(array($indexMethod)));
+        }
+
+        $this->assertEquals($expectedResult, $moduleConfig->index());
+    }
 }

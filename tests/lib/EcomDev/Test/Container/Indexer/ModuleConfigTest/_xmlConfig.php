@@ -98,6 +98,11 @@ return '<?xml version="1.0"?>
             <!-- this one will not be included to resources -->
             <module_name2_resource>
                 <class>Module_Name2_Model_Resource</class>
+                <entities>
+                    <core><table>module_core</table></core>
+                    <another_core><table>module_another_core</table></another_core>
+                    <invalid>invalid_table</invalid>
+                </entities>
             </module_name2_resource>
         </models>
         <helpers>
@@ -126,12 +131,22 @@ return '<?xml version="1.0"?>
                     <module>Module_Name</module>
                 </setup>
             </module_name_setup>
+            <module_name1_setup>
+                <setup>
+                    <module>Module_Name1</module>
+                </setup>
+            </module_name1_setup>
             <module_name2_setup>
                 <setup>
                     <class>Module_Name2_Model_Resource_Setup</class>
                     <module>Module_Name2</module>
                 </setup>
             </module_name2_setup>
+            <unknown_module5_setup>
+                <setup>
+                    <module>Module_Name5</module>
+                </setup>
+            </unknown_module5_setup>
             <unknown_module_setup>
                 <setup>
                     <module>Unknown_Module</module>

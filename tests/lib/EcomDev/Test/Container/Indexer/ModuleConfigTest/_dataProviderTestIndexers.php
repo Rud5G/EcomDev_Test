@@ -116,6 +116,9 @@ return array(
                 'Module_Name' => array(
                     'module_name_setup' => 'Mage_Core_Model_Resource_Setup'
                 ),
+                'Module_Name1' => array(
+                    'module_name1_setup' => 'Mage_Core_Model_Resource_Setup'
+                ),
                 'Module_Name2' => array(
                     'module_name2_setup' => 'Module_Name2_Model_Resource_Setup'
                 )

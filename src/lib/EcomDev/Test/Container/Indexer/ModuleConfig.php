@@ -23,15 +23,27 @@ namespace EcomDev\Test\Container\Indexer;
  */
 use EcomDev\Test\Util\FileSystem;
 
+/**
+ * Module Configuration file indexer
+ */
 class ModuleConfig extends ConfigAbstract
 {
     const REGEXP_INSTALL_FILE = '/^(mysql4-)?(install|data-install)-.*?\.php$/';
     const REGEXP_UPGRADE_FILE = '/^(mysql4-)?(upgrade|data-upgrade)-.*?-.*?\.php$/';
     const DEFAULT_SETUP_CLASS = 'Mage_Core_Model_Resource_Setup';
 
+    /**
+     * Indexes module configuration
+     *
+     * @return array
+     */
     public function index()
     {
-        // Main facade stub
+        return array(
+            'modules' => $this->indexModules(),
+            'aliases' => $this->indexAliases(),
+            'setup'   => $this->indexSetup()
+        );
     }
 
     /**

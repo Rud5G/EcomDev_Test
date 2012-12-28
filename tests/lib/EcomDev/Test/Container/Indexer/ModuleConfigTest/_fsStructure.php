@@ -38,6 +38,8 @@ return array(
                                 )
                             )
                         ),
+                        'Name1' => array(
+                        ),
                         'Name2' => array(
                             'sql' => array(
                                 'module_name2_setup'  => array(
