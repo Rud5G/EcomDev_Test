@@ -10,6 +10,7 @@
     }],
     "require": {
         "mikey179/vfsStream": "1.*",
+        "symfony/yaml": "2.1.*",
         "magento-hackathon/magento-composer-installer": "dev-master"
     },
     "require-dev": {

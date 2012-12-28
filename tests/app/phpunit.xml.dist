@@ -5,6 +5,10 @@
     </testsuite>
     <php>
         <ini name="date.timezone" value="Europe/Amsterdam"/>
+        <!-- these three options are required for virtual file stream -->
+        <ini name="suhosin.executor.include.whitelist" value= "vfs://" />
+        <ini name="allow_url_fopen" value= "1" />
+        <ini name="allow_url_include" value= "1" />
     </php>
     <filter>
         <blacklist>

@@ -17,24 +17,13 @@
  */
 
 return array(
-    'core_module_auto' => array(
-        'Mage_Core',
-        null,
-        'magento/app/code/core/Mage/Core'
-    ),
-    'core_module' => array(
-        'Mage_Catalog',
-        'core',
-        'magento/app/code/core/Mage/Catalog'
-    ),
-    'community_module' => array(
-        'EcomDev_PHPUnit',
-        'community',
-        'magento/app/code/community/EcomDev/PHPUnit'
-    ),
-    'non_existent' => array(
-        'EcomDevPHPUnit',
-        'community',
-        false
-    )
+    'guess_yml' => array('some-yml-file', false),
+    'normal_yml' => array('some-yml-file.yml', false),
+    'guess_yaml' => array('some-yaml-file', false),
+    'normal_yaml' => array('some-yaml-file.yaml', false),
+    'guess_php' => array('guess-php-file', true),
+    'normal_php' => array('some-php-file.php', true),
+    'not_exists' => array('some-non-existent-file', false),
+    'not_exists_yaml' => array('some-non-existent-file.yaml', false),
+    'not_exists_php' => array('some-non-existent-file.php', true) // Should return true, php allowed type
 );

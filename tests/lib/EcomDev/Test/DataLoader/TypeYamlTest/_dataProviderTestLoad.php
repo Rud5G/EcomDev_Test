@@ -17,24 +17,13 @@
  */
 
 return array(
-    'core_module_auto' => array(
-        'Mage_Core',
-        null,
-        'magento/app/code/core/Mage/Core'
-    ),
-    'core_module' => array(
-        'Mage_Catalog',
-        'core',
-        'magento/app/code/core/Mage/Catalog'
-    ),
-    'community_module' => array(
-        'EcomDev_PHPUnit',
-        'community',
-        'magento/app/code/community/EcomDev/PHPUnit'
-    ),
-    'non_existent' => array(
-        'EcomDevPHPUnit',
-        'community',
-        false
-    )
+    'guess_yml' => array('some-yml-file', array('yml' => 'some_yml_data')),
+    'normal_yml' => array('some-yml-file.yml', array('yml' => 'some_yml_data')),
+    'guess_yaml' => array('some-yaml-file', array('yaml' => 'some_yaml_data')),
+    'normal_yaml' => array('some-yaml-file.yaml', array('yaml' => 'some_yaml_data')),
+    'guess_php' => array('guess-php-file', false),
+    'normal_php' => array('some-php-file.php', false),
+    'not_exists' => array('some-non-existent-file', false),
+    'not_exists_yaml' => array('some-non-existent-file.yaml', false),
+    'not_exists_php' => array('some-non-existent-file.php', false)
 );
